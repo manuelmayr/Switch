@@ -1,1 +1,1 @@
-= FerryCore - A Query Language for Ruby
+= Switch - A Query Language for Ruby
