@@ -1,0 +1,8 @@
+require "switch/query_language/queryables/atomics/atomic"
+require "switch/query_language/queryables/atomics/dbl"
+require "switch/query_language/queryables/atomics/int"
+require "switch/query_language/queryables/atomics/str"
+require "switch/query_language/queryables/atomics/boolean"
+require "switch/query_language/queryables/atomics/array"
+require "switch/query_language/queryables/atomics/empty_array"
+require "switch/query_language/queryables/atomics/one_element_array"

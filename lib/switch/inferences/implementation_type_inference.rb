@@ -1,0 +1,2 @@
+require "switch/inferences/implementation_type_inference/implementation_types"
+require "switch/inferences/implementation_type_inference/implementation_type_inference"

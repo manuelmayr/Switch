@@ -1,0 +1,7 @@
+require 'switch/engines/ferry/engine'
+require 'switch/engines/ferry/pathfinder'
+require 'switch/engines/ferry/queryable'
+require 'switch/engines/ferry/table'
+require 'switch/engines/ferry/query_plan'
+require 'switch/engines/ferry/resultset'
+require 'switch/engines/ferry/resultset_factory'

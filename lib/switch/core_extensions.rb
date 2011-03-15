@@ -1,0 +1,5 @@
+require "switch/core_extensions/inflector"
+require "switch/core_extensions/array"
+require "switch/core_extensions/module"
+require "switch/core_extensions/string"
+require "switch/core_extensions/symbol"

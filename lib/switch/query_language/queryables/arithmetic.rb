@@ -1,0 +1,5 @@
+require "switch/query_language/queryables/arithmetic/binary_arith"
+require "switch/query_language/queryables/arithmetic/division"
+require "switch/query_language/queryables/arithmetic/minus"
+require "switch/query_language/queryables/arithmetic/multiplication"
+require "switch/query_language/queryables/arithmetic/plus"
