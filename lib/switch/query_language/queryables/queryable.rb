@@ -45,6 +45,13 @@ module Switch
         end
       end
 
+      [:length, :size].each do |method|
+        define_method(method) do |*queryables|
+          Switch.const_get(:Count).new(self)
+        end
+      end
+
+
       [:take, :drop].each do |method|
         define_method(method) do |value|
           Switch.const_get(method.classify).new(self, value)
