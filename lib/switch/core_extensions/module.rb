@@ -83,13 +83,24 @@ end
 
 class Module
   alias :const_missing_ :const_missing
+
+  # Here we use the const_missing hook to check if a
+  # given constant name is a name of a database table.
+  # if thats the case we create a Table-object for it.
   def const_missing(const)
-      if ::Switch::Queryable.engine and
-         ::Switch::Queryable.engine.tables.member? const.to_s.downcase then
-        ::Switch::Table(const.to_s.downcase.to_sym)
-      else
-        const_missing_(const)
-      end
+    table_name = const.to_s.downcase
+
+    return ::Switch::Table(table_name) if is_database_table? table_name
+    const_missing_(const)
+  end
+
+  private 
+
+  def is_database_table?( table_name )
+    return false unless ::Switch::Queryable.engine
+
+    tables     = ::Switch::Queryable.engine.tables 
+    return tables.member? table_name
   end
 end
 
