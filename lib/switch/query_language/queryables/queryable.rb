@@ -83,11 +83,18 @@ module Switch
     module Arithmetic
       [:+, :-, :*, :/].each do |method|
         define_method(method) do |right_op|
-          methods = { :+ => :Plus,
-                      :- => :Minus,
-                      :* => :Multiplication,
-                      :/ => :Division }
+          methods = { :+  => :Plus,
+                      :-  => :Minus,
+                      :*  => :Multiplication,
+                      :/  => :Division }
           Switch.const_get(methods[method]).new(self, right_op)
+        end
+      end
+      [:+@, :-@].each do |method|
+        define_method(method) do
+          methods = { :+@ => :UnaryPlus,
+                      :-@ => :UnaryMinus }
+          Switch.const_get(methods[method]).new(self)
         end
       end
     end
@@ -107,6 +114,9 @@ module Switch
                       :and => :And }
           Switch.const_get(methods[method]).new(self, right_op)
         end
+      end
+      def !
+        Switch.const_get(:Not).new(self)
       end
     end
     include Comparables
