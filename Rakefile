@@ -76,7 +76,7 @@ else
   # Code Coverage
   desc "Run specs"
   Spec::Rake::SpecTask.new(:spec) do |t|
-    t.spec_files = FileList['spec/switch/**/*_spec.rb']
+    t.spec_files = FileList['spec/switch/translation/**/*_spec.rb']
   end
   
   # Code Coverage
