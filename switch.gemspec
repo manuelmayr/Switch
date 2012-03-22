@@ -10,13 +10,11 @@ Gem::Specification.new do |s|
   s.description = %q{}
   s.email = %q{mayr@informatik.uni-tuebingen.de}
   s.extra_rdoc_files = [
-    "History.txt",
   ]
   s.extensions = ["ext/extconf.rb"]
   s.files = [
 #    ".gitignore",
 #    ".gitmodules",
-    "History.txt",
     "switch.gemspec",
     "lib/switch.rb",
     "lib/switch/dispatcher.rb",
