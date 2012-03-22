@@ -94,12 +94,12 @@ class Module
     const_missing_(const)
   end
 
-  private 
+  private
 
   def is_database_table?( table_name )
     return false unless ::Switch::Queryable.engine
 
-    tables     = ::Switch::Queryable.engine.tables 
+    tables     = ::Switch::Queryable.engine.tables
     return tables.member? table_name
   end
 end

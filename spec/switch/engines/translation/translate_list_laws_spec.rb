@@ -33,10 +33,10 @@ module Switch
           forall(RandomIntegerArray, RandomIntegerArray) do |ary1, ary2|
             RushCheck.guard { ary1.length > 0 and ary2.length > 0 }
             rec = { a:ary1, b:ary2 }
-            res = DBValue(rec).zip.unzip.all 
+            res = DBValue(rec).zip.unzip.all
             res.should eql(
               case
-                when ary1.length == ary2.length then 
+                when ary1.length == ary2.length then
                   rec
                 when ary1.length < ary2.length then
                   { a:ary1, b:ary2[0...ary1.length] }

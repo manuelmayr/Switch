@@ -122,7 +122,7 @@ module Switch
             when Atom
               result.first
             # otherwise we simply return the list
-            when List 
+            when List
               result
           end
         end

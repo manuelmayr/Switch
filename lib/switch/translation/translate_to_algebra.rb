@@ -708,14 +708,14 @@ module Switch
                             project({ outer => [outer_] })
 
           # get the minimum position where the passing criterion
-          # is false grouped by the 
+          # is false grouped by the
           pass = passing.
                           # in the case all elements passing we need to add
                           # an artificial false on the end of a list
                           union(mapping.equi_join(no_pass, outer, outer_).
                                         max(Pos(2), [Pos(2)], [outer]).
                                         attach(AttachItem.new(Pos(3), RNat(1))).
-                                        addition(Pos(4), [Pos(2), Pos(3)]).                                   
+                                        addition(Pos(4), [Pos(2), Pos(3)]).
                                         project({ outer  => [Iter(1)],
                                                   Pos(4) => [Pos(1)] }))
 
@@ -728,7 +728,7 @@ module Switch
                                          or(Pos(5), [Pos(4), pos_]) :
                                       q_
 
-          q___ = q__.select(meth == :drop_while ? Pos(5) : pos_). 
+          q___ = q__.select(meth == :drop_while ? Pos(5) : pos_).
                      project([outer, Pos(2)]).
                      theta_join(q_e1, [Equivalence.new(outer, Iter(1)),
                                        Equivalence.new(Pos(2), Pos(1))]).
@@ -744,37 +744,37 @@ module Switch
       [:max_by, :min_by].each do |meth|
         define_method(meth) do |loop, env, ast|
           e1 = compile_(loop, env, ast.queryable)
-  
+
           q_e1, cols_e1, itbls_e1 = e1.plan, e1.column_structure,
                                     e1.surrogates
-  
+
           inner, outer, outer_, pos_ = Iter(2), Iter(3), Iter(4), Pos(3)
-  
+
           # create a mapping
           map = create_mapping(q_e1)
-  
+
           q_v, lam = compile_lambda(env, map, ast.lambda, e1)
-  
+
           q_lam, cols_lam, itbls_lam = lam.plan, lam.column_structure,
                                        lam.surrogates
-  
+
           mapping = q_lam.equi_join(map, Iter(1), inner)
-  
+
           # calculate the maximum the values
           # calculated in the lambda body
           max = mapping.
                   send({ :max_by => :max,
                          :min_by => :min }[meth], Item(1), [Item(1)], [outer])
-  
+
           # now we need to get all the outer values
           # associated with this maximum value
           max_outer = max.project({ Item(1) => [Item(2)] }).
                           equi_join(mapping, Item(2), Item(1)).
                           project([outer, Pos(2)])
-  
+
           q = q_e1.theta_join(max_outer, [Equivalence.new(Iter(1), outer),
                                           Equivalence.new(Pos(1), Pos(2))])
-  
+
           # get only the first item
           q_ = q.row_num(Pos(3), [Iter(1)], [Pos(1)]).
                  attach(AttachItem.new(Pos(4), RNat(1))).
@@ -785,9 +785,9 @@ module Switch
                              cols_e1.items.map do |it|
                                [it,[it]]
                              end.to_hash))
-  
+
           itbls_ = itbls_e1.itsel(q_)
-  
+
           QueryInformationNode.new(q_, cols_e1, itbls_,
                                    e1.side_effects + lam.side_effects)
         end
@@ -932,7 +932,7 @@ module Switch
           q = q_e.project([Iter(1)]).
                   distinct.
                   attach(AttachItem.new(item, RBool(true)))
-          
+
 #          not(item_, item).
 #                  all(item_, [item_], [Iter(1)]).
 #                  not(item__, item_).
@@ -1036,13 +1036,13 @@ module Switch
         qin = e.surrogates.join
 
         QueryInformationNode.new(
-          qin.plan, e.column_structure, 
+          qin.plan, e.column_structure,
           qin.surrogates)
       end
 
       def unzip(loop, env, ast)
         e = compile_(loop, env, ast.queryable)
-        
+
         q_e, cols_e, itbls_e = e.plan,
                                e.column_structure, e.surrogates
 

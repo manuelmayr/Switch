@@ -22,13 +22,13 @@ CREATE TABLE ShoppingCarts
 );
 
 ALTER TABLE ShoppingCarts
-  ADD CONSTRAINT 
+  ADD CONSTRAINT
     shoppingcart_pk_a_id_c_id
       PRIMARY KEY(a_id, c_id);
 
 ALTER TABLE ShoppingCarts
-  ADD CONSTRAINT 
-    shoppingcart_fk_a_id 
+  ADD CONSTRAINT
+    shoppingcart_fk_a_id
       FOREIGN KEY(a_id) REFERENCES Articles(id)
                              ON DELETE RESTRICT;
 
@@ -43,7 +43,7 @@ ALTER TABLE Clients
     PRIMARY KEY(id);
 
 ALTER TABLE ShoppingCarts
-  ADD CONSTRAINT shoppingcart_fk_c_id 
+  ADD CONSTRAINT shoppingcart_fk_c_id
     FOREIGN KEY(c_id) REFERENCES Clients(id)
                          ON DELETE RESTRICT;
 

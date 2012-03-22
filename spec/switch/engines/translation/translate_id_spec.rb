@@ -10,9 +10,9 @@ module Switch
   end
 
   describe TranslateToAlgebra do
-    context "Check id compilation on database"    
+    context "Check id compilation on database"
 
-    describe "any Integer i" do 
+    describe "any Integer i" do
       it "should be the same after compilation" do
         forall(Integer) do |i|
           res = DBValue(i).all
@@ -21,7 +21,7 @@ module Switch
       end
     end
 
-    describe "any String s" do 
+    describe "any String s" do
       it "should be the same after compilation" do
         forall(String) do |s|
           res = DBValue(s).all
@@ -30,7 +30,7 @@ module Switch
       end
     end
 
-    describe "any Float f" do 
+    describe "any Float f" do
       it "should be the same after compilation" do
         forall(Float) do |f|
           res = DBValue(f).all

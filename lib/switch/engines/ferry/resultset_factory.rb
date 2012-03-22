@@ -48,7 +48,7 @@ module Switch
         # entries are attributes too
         if ::Locomotive::RelationalAlgebra::
              AttributeColumnStructure ===
-             cs.entries[0] 
+             cs.entries[0]
           lam_attribute(cs)
         # otherwise we just have an offset
         else
@@ -101,7 +101,7 @@ module Switch
               # given that curr is not initialized yet
               # block until the thread returns the
               # result and initialize the query
-              
+
               curr = @next
               # cast the result and convert the names into
               # symbols
@@ -117,7 +117,7 @@ module Switch
                         offs_ = offs.id - 1
                         item_name = @items[offs_]
                         type = @schema_map["#{item_name}"]
-                        
+
                         if type != "nat"
                           curr["#{item_name}_#{type}".to_sym]
                         else
@@ -128,7 +128,7 @@ module Switch
                              curr["#{item_name}_nat".to_sym])
                         end
                       end
-                      
+
                 yielder.yield(@lam_mat.call(ary))
               end
               raise StopIteration if curr[@iter_] > iter
