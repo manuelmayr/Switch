@@ -11,6 +11,7 @@ module Switch
                      :text    => TStr.type,
                      :float   => TDbl.type,
                      :decimal => TDbl.type,
+                     :date     => TStr.type,
                      :datetime => TStr.type,
                      :timestamp => TStr.type,
                      :boolean  => TInt.type }
