@@ -42,14 +42,14 @@ ActiveRecord::Base.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
 ActiveRecord::Base.configurations = { 
   'pg' => {
      :username => '<username>',
-     :password => '<password>'
+     :password => '<password>',
      :adapter  => :postgresql,
      :encoding => 'utf8',
      :database => '<database>'
    },  
    'db2' => {
      :username => '<username>',
-     :password => '<password>'
+     :password => '<password>',
      :adapter  => :ibm_db,
      :encoding => 'utf8',
      :database => '<database>'
